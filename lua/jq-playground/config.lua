@@ -1,7 +1,7 @@
 local M = {}
 
 M.default_config = {
-  cmd = { "jq" },
+  cmd = "jq",
   output_window = {
     split_direction = "right",
     width = nil,
@@ -14,7 +14,7 @@ M.default_config = {
     split_direction = "below",
     width = nil,
     height = 0.3,
-    scratch = false,
+    scratch = true,
     filetype = "jq",
     name = "query editor",
   },

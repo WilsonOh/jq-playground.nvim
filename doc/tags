@@ -1,0 +1,7 @@
+:JqPlayground	jq-playground.txt	/*:JqPlayground*
+JqPlaygroundRunQuery	jq-playground.txt	/*JqPlaygroundRunQuery*
+jq-playground	jq-playground.txt	/*jq-playground*
+jq-playground-command	jq-playground.txt	/*jq-playground-command*
+jq-playground-configuration	jq-playground.txt	/*jq-playground-configuration*
+jq-playground-run-query	jq-playground.txt	/*jq-playground-run-query*
+jq-playground.txt	jq-playground.txt	/*jq-playground.txt*

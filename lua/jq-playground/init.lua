@@ -5,12 +5,10 @@ function M.setup(opts)
 
   confmod.config = vim.tbl_deep_extend("force", confmod.default_config, opts or {})
 
-  vim.api.nvim_create_user_command("JqPlayground", function(params)
-    require("jq-playground.playground").init_playground(params.fargs[1])
+  vim.api.nvim_create_user_command("JqPlaygroundToggle", function()
+    require("jq-playground.playground").toggle_playground()
   end, {
-    desc = "Start jq query editor and live preview",
-    nargs = "?",
-    complete = "file",
+    desc = "Toggle jq playground",
   })
 end
 
