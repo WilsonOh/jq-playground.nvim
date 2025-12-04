@@ -114,6 +114,12 @@ end
 
 M.toggle_playground = function()
   if not M.loaded then
+    local curbuf = vim.api.nvim_get_current_buf()
+    local filetype = vim.api.nvim_get_option_value("filetype", { buf = curbuf })
+    if filetype ~= "json" then
+      vim.notify_once("jq playground not availble for non-json files", vim.log.levels.ERROR)
+      return
+    end
     M.init_playground()
     M.loaded = true
   end
