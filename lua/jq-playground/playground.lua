@@ -8,6 +8,7 @@ local M = {
   query_winnr = nil,
   output_bufnr = nil,
   output_winnr = nil,
+  input_bufnr = nil,
 }
 
 local function show_error(msg)
@@ -88,8 +89,10 @@ function M.init_playground()
   vim.bo[M.query_bufnr].filetype = "jq"
   vim.api.nvim_buf_set_name(M.query_bufnr, "jq query")
 
+  M.input_bufnr = curbuf
+
   vim.keymap.set({ "n" }, "<CR>", function()
-    run_query(cfg.cmd, curbuf, M.query_bufnr, M.output_bufnr)
+    run_query(cfg.cmd, M.input_bufnr, M.query_bufnr, M.output_bufnr)
   end, {
     buffer = M.query_bufnr,
     silent = true,
@@ -131,6 +134,14 @@ M.toggle_playground = function()
     M.close_playground()
     M.open = false
   end
+end
+
+M.set_and_run_jq_query_input = function(jqPath)
+  if not M.open then
+    M.toggle_playground()
+  end
+  vim.api.nvim_buf_set_lines(M.query_bufnr, 0, -1, false, { jqPath })
+  run_query(M.cfg.cmd, M.input_bufnr, M.query_bufnr, M.output_bufnr)
 end
 
 return M
